@@ -1,15 +1,15 @@
-package com.devonfw.cobigen.todoplugin;
+package com.devonfw.cobigen.pythonplugin;
 
 import com.devonfw.cobigen.api.extension.InputReader;
 import com.devonfw.cobigen.api.extension.MatcherInterpreter;
 import com.devonfw.cobigen.api.extension.TriggerInterpreter;
-import com.devonfw.cobigen.todoplugin.inputreader.TodoInputReader;
-import com.devonfw.cobigen.todoplugin.matcher.TodoMatcher;
+import com.devonfw.cobigen.pythonplugin.inputreader.PythonInputReader;
+import com.devonfw.cobigen.pythonplugin.matcher.PythonMatcher;
 
 /**
  * {@link TriggerInterpreter} implementation of a Swagger Interpreter
  */
-public class TodoTriggerInterpreter implements TriggerInterpreter {
+public class PythonTriggerInterpreter implements TriggerInterpreter {
 
     /**
      * {@link TriggerInterpreter} type to be registered
@@ -21,7 +21,7 @@ public class TodoTriggerInterpreter implements TriggerInterpreter {
      * @param type
      *            to be registered
      */
-    public TodoTriggerInterpreter(String type) {
+    public PythonTriggerInterpreter(String type) {
         this.type = type;
     }
 
@@ -32,12 +32,12 @@ public class TodoTriggerInterpreter implements TriggerInterpreter {
 
     @Override
     public InputReader getInputReader() {
-        return new TodoInputReader();
+        return new PythonInputReader();
     }
 
     @Override
     public MatcherInterpreter getMatcher() {
-        return new TodoMatcher();
+        return new PythonMatcher();
     }
 
 }

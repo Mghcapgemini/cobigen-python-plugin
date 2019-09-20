@@ -1,4 +1,4 @@
-package com.devonfw.cobigen.todoplugin.merger;
+package com.devonfw.cobigen.pythonplugin.merger;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,12 +20,12 @@ import com.devonfw.cobigen.impl.exceptions.ConnectionExceptionHandler;
 import com.devonfw.cobigen.impl.externalprocess.ExternalProcessHandler;
 
 /**
- * The {@link TodoMerger} merges a patch and the base file. There will be no merging on statement level.
+ * The {@link PythonMerger} merges a patch and the base file. There will be no merging on statement level.
  */
-public class TodoMerger implements Merger {
+public class PythonMerger implements Merger {
 
     /** Logger instance. */
-    private static final Logger LOG = LoggerFactory.getLogger(TodoMerger.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PythonMerger.class);
 
     /**
      * Instance that handles all the operations performed to the external server, like initializing the
@@ -49,7 +49,7 @@ public class TodoMerger implements Merger {
     private boolean patchOverrides;
 
     /**
-     * Creates a new {@link TodoMerger}
+     * Creates a new {@link PythonMerger}
      *
      * @param type
      *            merger type
@@ -57,7 +57,7 @@ public class TodoMerger implements Merger {
      *            if <code>true</code>, conflicts will be resolved by using the patch contents<br>
      *            if <code>false</code>, conflicts will be resolved by using the base contents
      */
-    public TodoMerger(String type, boolean patchOverrides) {
+    public PythonMerger(String type, boolean patchOverrides) {
         this.type = type;
         this.patchOverrides = patchOverrides;
         try {

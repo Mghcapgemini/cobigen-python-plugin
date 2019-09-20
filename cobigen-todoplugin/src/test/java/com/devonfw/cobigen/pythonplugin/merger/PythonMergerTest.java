@@ -1,4 +1,4 @@
-package com.devonfw.cobigen.todoplugin.merger;
+package com.devonfw.cobigen.pythonplugin.merger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,15 +15,15 @@ import org.junit.Test;
 import com.devonfw.cobigen.api.exception.MergeException;
 
 /**
- * Test methods for different todo mergers of the plugin
+ * Test methods for different python mergers of the plugin
  */
-public class TodoMergerTest {
+public class PythonMergerTest {
 
     /** Test resources root path */
     private static String testFileRootPath = "src/test/resources/testdata/unittest/files/";
 
     /**
-     * Checks if the todo-merger can be launched and if the output is correct with patchOverrides = false
+     * Checks if the python-merger can be launched and if the output is correct with patchOverrides = false
      *
      * @test fails
      */
@@ -31,11 +31,11 @@ public class TodoMergerTest {
     public void testMergingNoOverrides() {
 
         // arrange
-        File baseFile = new File(testFileRootPath + "baseFile.todo");
+        File baseFile = new File(testFileRootPath + "baseFile.py");
 
         // act
         String mergedContents =
-            new TodoMerger("todomerge", false).merge(baseFile, readTodoFile("patchFile.todo"), "UTF-8");
+            new PythonMerger("pythonmerge", false).merge(baseFile, readpythonFile("patchFile.py"), "UTF-8");
 
         assertThat(mergedContents).isNotNull();
         // Use the following assert as template for your testing
@@ -43,7 +43,7 @@ public class TodoMergerTest {
         // assertThat(mergedContents).contains("private b: number;");
         // assertThat(mergedContents).contains("bProperty");
 
-        mergedContents = new TodoMerger("todomerge", false).merge(baseFile, readTodoFile("patchFile.todo"), "ISO-8859-1");
+        mergedContents = new PythonMerger("pythonmerge", false).merge(baseFile, readpythonFile("patchFile.py"), "ISO-8859-1");
 
         assertThat(mergedContents).isNotNull();
         // Use the following assert as template for your testing
@@ -54,7 +54,7 @@ public class TodoMergerTest {
     }
 
     /**
-     * Checks if the todo-merger can be launched and if the output is correct with patchOverrides = true
+     * Checks if the python-merger can be launched and if the output is correct with patchOverrides = true
      *
      * @test fails
      */
@@ -62,11 +62,11 @@ public class TodoMergerTest {
     public void testMergingOverrides() {
 
         // arrange
-        File baseFile = new File(testFileRootPath + "baseFile.todo");
+        File baseFile = new File(testFileRootPath + "baseFile.py");
 
         // act
         String mergedContents =
-            new TodoMerger("todomerge", true).merge(baseFile, readTodoFile("patchFile.todo"), "UTF-8");
+            new PythonMerger("pythonmerge", true).merge(baseFile, readpythonFile("patchFile.py"), "UTF-8");
 
         assertThat(mergedContents).isNotNull();
         // Use the following assert as template for your testing
@@ -74,7 +74,7 @@ public class TodoMergerTest {
         // assertThat(mergedContents).contains("private b: number;");
         // assertThat(mergedContents).contains("bProperty");
 
-        mergedContents = new TodoMerger("todomerge", true).merge(baseFile, readTodoFile("patchFile.todo"), "ISO-8859-1");
+        mergedContents = new PythonMerger("pythonmerge", true).merge(baseFile, readpythonFile("patchFile.py"), "ISO-8859-1");
 
         assertThat(mergedContents).isNotNull();
         // Use the following assert as template for your testing
@@ -94,16 +94,16 @@ public class TodoMergerTest {
     @Test
     public void testReadingEncoding() throws IOException {
 
-        File baseFile = new File(testFileRootPath + "baseFile_encoding_UTF-8.todo");
-        File patchFile = new File(testFileRootPath + "patchFile.todo");
+        File baseFile = new File(testFileRootPath + "baseFile_encoding_UTF-8.py");
+        File patchFile = new File(testFileRootPath + "patchFile.py");
 
         String mergedContents =
-            new TodoMerger("todomerge", false).merge(baseFile, FileUtils.readFileToString(patchFile), "UTF-8");
+            new PythonMerger("pythonmerge", false).merge(baseFile, FileUtils.readFileToString(patchFile), "UTF-8");
 
         // Use the following assert as template for your testing
         // assertThat(mergedContents.contains("Ñ")).isTrue();
 
-        baseFile = new File(testFileRootPath + "baseFile_encoding_ISO-8859-1.todo");
+        baseFile = new File(testFileRootPath + "baseFile_encoding_ISO-8859-1.py");
 
         // Use the following assert as template for your testing
         // assertThat(mergedContents.contains("Ñ")).isTrue();
@@ -111,13 +111,13 @@ public class TodoMergerTest {
     }
 
     /**
-     * Reads a todo file
+     * Reads a python file
      *
      * @param fileName
-     *            the todo file
+     *            the python file
      * @return the content of the file
      */
-    private String readTodoFile(String fileName) {
+    private String readpythonFile(String fileName) {
 
         File patchFile = new File(testFileRootPath + fileName);
         String file = patchFile.getAbsolutePath();

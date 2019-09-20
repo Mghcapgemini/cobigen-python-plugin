@@ -1,4 +1,4 @@
-package com.devonfw.cobigen.todoplugin.inputreader;
+package com.devonfw.cobigen.pythonplugin.inputreader;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -35,10 +35,10 @@ import com.devonfw.cobigen.impl.externalprocess.ExternalProcessHandler;
 /**
  * Todo input reader that uses a server to read Todo code
  */
-public class TodoInputReader implements InputReader {
+public class PythonInputReader implements InputReader {
 
     /** Logger instance. */
-    private static final Logger LOG = LoggerFactory.getLogger(TodoInputReader.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PythonInputReader.class);
 
     /**
      * Instance that handles all the operations performed to the external server, like initializing the
@@ -56,9 +56,9 @@ public class TodoInputReader implements InputReader {
     private String charset = "UTF-8";
 
     /**
-     * Creates a new {@link TodoInputReader}
+     * Creates a new {@link PythonInputReader}
      */
-    public TodoInputReader() {
+    public PythonInputReader() {
 
         try {
             // We first check if the server is already running

@@ -2,20 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.devonfw.cobigen</groupId>
-   <artifactId>todoplugin</artifactId>
-   <name>CobiGen - Todo Plug-in</name>
+   <artifactId>pyplugin</artifactId>
+   <name>CobiGen - py Plug-in</name>
    <version>1.0.0-SNAPSHOT</version>
    <packaging>jar</packaging>
-   <description>CobiGen - Todo Plug-in</description>
+   <description>CobiGen - py Plug-in</description>
    
    <properties>
       <!-- External server properties -->
       <plugin.name>${project.artifactId}</plugin.name>
-      <server.name>todoserver</server.name>
+      <server.name>pyserver</server.name>
       <server.version>1.0.0</server.version>
-      <server.url>https\://registry.npmjs.org/@devonfw/cobigen-todo-server/-/cobigen-todo-server-${server.version}.tgz</server.url>
-      <server.url.linux>https\://registry.npmjs.org/@devonfw/cobigen-todo-server-linux/-/cobigen-todo-server-linux-${server.version}.tgz</server.url.linux>
-      <server.url.macos>https\://registry.npmjs.org/@devonfw/cobigen-todo-server-macos/-/cobigen-todo-server-macos-${server.version}.tgz</server.url.macos>
+      <server.url>https\://registry.npmjs.org/@devonfw/cobigen-py-server/-/cobigen-py-server-${server.version}.tgz</server.url>
+      <server.url.linux>https\://registry.npmjs.org/@devonfw/cobigen-py-server-linux/-/cobigen-py-server-linux-${server.version}.tgz</server.url.linux>
+      <server.url.macos>https\://registry.npmjs.org/@devonfw/cobigen-py-server-macos/-/cobigen-py-server-macos-${server.version}.tgz</server.url.macos>
 	  
       <!-- Maven related properties, not need to be changed -->
       <skip.deployment>false</skip.deployment>

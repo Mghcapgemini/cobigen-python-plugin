@@ -1,4 +1,4 @@
-package com.devonfw.cobigen.todoplugin.inputreader;
+package com.devonfw.cobigen.pythonplugin.inputreader;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -16,12 +16,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Input reader test for Todo files
+ * Input reader test for py files
  */
-public class TodoInputReaderTest {
+public class PythonInputReaderTest {
 
     /** Logger instance. */
-    private static final Logger LOG = LoggerFactory.getLogger(TodoInputReader.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PythonInputReader.class);
 
     /** Test resources root path */
     private static String testFileRootPath = "src/test/resources/testdata/unittest/files/";
@@ -37,7 +37,7 @@ public class TodoInputReaderTest {
     public String readingInput(Path filePath) {
 
         // act
-        String inputModel = (String) new TodoInputReader().read(filePath, Charset.defaultCharset());
+        String inputModel = (String) new PythonInputReader().read(filePath, Charset.defaultCharset());
         // Use the following assert as template for your testing
         // assertThat(inputModel).contains("\"identifier\":\"aProperty\"");
         return inputModel;
@@ -53,12 +53,12 @@ public class TodoInputReaderTest {
     public void testCreatingModel() {
 
         // arrange
-        File baseFile = new File(testFileRootPath + "baseFile.todo");
+        File baseFile = new File(testFileRootPath + "baseFile.py");
 
         String inputModel =
-            (String) new TodoInputReader().read(baseFile.getAbsoluteFile().toPath(), Charset.defaultCharset());
+            (String) new PythonInputReader().read(baseFile.getAbsoluteFile().toPath(), Charset.defaultCharset());
 
-        Map<String, Object> mapModel = new TodoInputReader().createModel(inputModel);
+        Map<String, Object> mapModel = new PythonInputReader().createModel(inputModel);
         assertThat(mapModel).isNotNull();
 
         LOG.debug(mapModel.toString());
@@ -93,8 +93,8 @@ public class TodoInputReaderTest {
     @Test
     public void testValidInput() {
 
-        File baseFile = new File(testFileRootPath + "baseFile.todo");
-        boolean isValidInput = new TodoInputReader().isValidInput(baseFile);
+        File baseFile = new File(testFileRootPath + "baseFile.py");
+        boolean isValidInput = new PythonInputReader().isValidInput(baseFile);
 
         LOG.debug("Valid input ? " + isValidInput);
         assertTrue(isValidInput);
@@ -110,8 +110,8 @@ public class TodoInputReaderTest {
     @Test
     public void testIsMostProbablyReadable() {
 
-        File baseFile = new File(testFileRootPath + "baseFile.todo");
-        boolean isReadable = new TodoInputReader().isMostLikelyReadable(baseFile.toPath());
+        File baseFile = new File(testFileRootPath + "baseFile.py");
+        boolean isReadable = new PythonInputReader().isMostLikelyReadable(baseFile.toPath());
 
         LOG.debug("is most probably readable ? " + isReadable);
         assertTrue(isReadable);
@@ -126,11 +126,11 @@ public class TodoInputReaderTest {
     @Test
     public void testIsValidInputAfterReading() {
 
-        File baseFile = new File(testFileRootPath + "baseFile.todo");
+        File baseFile = new File(testFileRootPath + "baseFile.py");
         // parsing
-        Object input = new TodoInputReader().read(baseFile.toPath(), Charset.defaultCharset());
+        Object input = new PythonInputReader().read(baseFile.toPath(), Charset.defaultCharset());
         // Now checking whether the input is valid
-        boolean isValid = new TodoInputReader().isValidInput(baseFile.toPath());
+        boolean isValid = new PythonInputReader().isValidInput(baseFile.toPath());
 
         LOG.debug("is valid ? " + isValid);
         assertTrue(isValid);
@@ -144,10 +144,10 @@ public class TodoInputReaderTest {
     @Test
     public void testGetInputObjects() {
 
-        File baseFile = new File(testFileRootPath + "baseFile.todo");
-        List<Object> todoInputObjects = new TodoInputReader().getInputObjects(baseFile, Charset.defaultCharset());
+        File baseFile = new File(testFileRootPath + "baseFile.py");
+        List<Object> pyInputObjects = new PythonInputReader().getInputObjects(baseFile, Charset.defaultCharset());
         // Uncomment the following
-        // LinkedHashMap<String, Object> inputObject = castToHashMap(todoInputObjects.get(0));
+        // LinkedHashMap<String, Object> inputObject = castToHashMap(pyInputObjects.get(0));
 
         // Use the following assert as template for your testing
         // assertNotNull(inputObject);

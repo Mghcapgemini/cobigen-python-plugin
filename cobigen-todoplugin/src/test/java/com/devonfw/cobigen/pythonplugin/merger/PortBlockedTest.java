@@ -1,4 +1,4 @@
-package com.devonfw.cobigen.todoplugin.merger;
+package com.devonfw.cobigen.pythonplugin.merger;
 
 import static org.junit.Assert.assertEquals;
 

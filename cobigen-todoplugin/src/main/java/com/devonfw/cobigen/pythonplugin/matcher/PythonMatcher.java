@@ -1,4 +1,4 @@
-package com.devonfw.cobigen.todoplugin.matcher;
+package com.devonfw.cobigen.pythonplugin.matcher;
 
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -15,15 +15,15 @@ import com.devonfw.cobigen.api.exception.InvalidConfigurationException;
 import com.devonfw.cobigen.api.extension.MatcherInterpreter;
 import com.devonfw.cobigen.api.to.MatcherTo;
 import com.devonfw.cobigen.api.to.VariableAssignmentTo;
-import com.devonfw.cobigen.todoplugin.inputreader.TodoInputReader;
+import com.devonfw.cobigen.pythonplugin.inputreader.PythonInputReader;
 import com.google.common.collect.Maps;
 
 /**
  * Matcher implementation for the Todo plug-in
  */
-public class TodoMatcher implements MatcherInterpreter {
+public class PythonMatcher implements MatcherInterpreter {
     /** Logger instance */
-    private static final Logger LOG = LoggerFactory.getLogger(TodoMatcher.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PythonMatcher.class);
 
     /** Currently supported matcher types */
     private enum MatcherType {
@@ -66,7 +66,7 @@ public class TodoMatcher implements MatcherInterpreter {
 
         try {
             // Input corresponds to the parsed file
-            Map<String, Object> mapModel = new TodoInputReader().createModel(target);
+            Map<String, Object> mapModel = new PythonInputReader().createModel(target);
             mapModel = (Map<String, Object>) mapModel.get("model");
             fqn = Paths.get(mapModel.get("path").toString()).getFileName().toString();
             // We remove the file extension
